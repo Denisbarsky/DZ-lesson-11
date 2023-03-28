@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача 2</h1>
+    <p>Дано інформацію про прибуток К магазинів протягом тижня. Знайти :</p>
+    <script>
+      let profits = [
+        [120, 150, 180, 200, 220, 190, 170], // Понеділок - Неділя
+        [90, 110, 120, 130, 150, 170, 200],
+        [200, 190, 180, 170, 160, 150, 140],
+        [140, 130, 120, 110, 100, 90, 80],
+      ];
+
+      // Розрахунок загального прибутку кожного магазину за тиждень
+      let weeklyProfits = [];
+      for (let i = 0; i < profits.length; i++) {
+        let sum = profits[i].reduce((acc, val) => acc + val);
+        weeklyProfits.push(sum);
+      }
+      document.write(weeklyProfits);
+
+      // Розрахунок загального прибутку усіх магазинів за кожен день
+      let dailyProfits = [];
+      for (let i = 0; i < profits[0].length; i++) {
+        let sum = 0;
+        for (let j = 0; j < profits.length; j++) {
+          sum += profits[j][i];
+        }
+        dailyProfits.push(sum);
+      }
+      document.write(dailyProfits);
+
+      // загальний прибуток за робочі дні
+      let totalWeekdaysIncome = 0;
+
+      for (let i = 0; i < income.length; i++) {
+        for (let j = 0; j < income[i].length; j++) {
+          if (j >= 0 && j <= 5) {
+            totalWeekdaysIncome += income[i][j];
+          }
+        }
+      }
+
+      document.write(
+        `Загальний прибуток за робочі дні: ${totalWeekdaysIncome}`
+      );
+
+      //Загальний прибуток, за вихідні дні
+      let totalWeekendIncome = 0;
+
+      for (let i = 0; i < income.length; i++) {
+        for (let j = 0; j < income[i].length; j++) {
+          if (j >= 5 && j <= 6) {
+            totalWeekendIncome += income[i][j];
+          }
+        }
+      }
+
+      document.write(
+        `Загальний прибуток за вихідні дні: ${totalWeekendIncome}`
+      );
+
+      //Максимальний прибуток за середу:
+
+      let maxIncomeWednesday = 0;
+
+      for (let i = 0; i < income.length; i++) {
+        if (income[i][2] > maxIncomeWednesday) {
+          maxIncomeWednesday = income[i][2];
+        }
+      }
+
+      document.write(`Максимальний прибуток за середу: ${maxIncomeWednesday}`);
+
+      //Сформувати загальний список (одновимірний масив) зі значенням, які що більші за 200:
+      let greaterThan200 = [];
+
+      for (let i = 0; i < income.length; i++) {
+        for (let j = 0; j < income[i].length; j++) {
+          if (income[i][j] > 200) {
+            greaterThan200.push(income[i][j]);
+          }
+        }
+      }
+
+      document.write(
+        `Загальний список зі значенням, які що більші за 200: ${greaterThan200}`
+      );
+
+      //Відсортувати кожен тиждень за зростанням:
+
+      const sortedIncome = income.map(function (arr) {
+        const copyArr = [...arr];
+
+        copyArr.sort(function (a, b) {
+          return a - b;
+        });
+
+        return copyArr;
+      });
+
+      document.write(sortedIncome);
+
+      //відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку), тобто при <br> порівнянні рядків потрібно порівнювати максимальні елементи у кожному з цих рядків
+
+      data.sort(function (a, b) {
+        return Math.max(...b) - Math.max(...a);
+      });
+
+      //упорядкувати тижні (рядки) за спаданням суми елементів у рядку (тобто при порівнянні двох рядків треба знайти суму кожного з рядків і порівнювати ці суми, на основі цих сум буде зрозуміло, який з елементів повинен іти раніше).
+      data.sort(function (a, b) {
+        return (
+          b.reduce((acc, cur) => acc + cur, 0) -
+          a.reduce((acc, cur) => acc + cur, 0)
+        );
+      });
+    </script>
+  </body>
+</html>

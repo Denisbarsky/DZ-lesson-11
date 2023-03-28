@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача 3</h1>
+    <p>
+      Морський бій. Випадковим чином на двовимірному полі розміром 6*6
+      розташовується 5 кораблів. Користувач стріляє вказуючи координати. Гра
+      продовжується поки не потоплено усі кораблі або у користувача не
+      закінчаться снаряди.
+    </p>
+    <script>
+      //створення поля для гри
+
+      const field = [];
+      for (let i = 0; i < 6; i++) {
+        field[i] = 0;
+        for (let j = 0; j < 6; j++) {
+          field[i][j] = 0;
+        }
+      }
+
+      // розмішення кораблів в грі на полі
+
+      let ships = 5;
+      while (ships > 0) {
+        const x = Math.floor(Math.random() * 6);
+        const y = Math.floor(Math.random() * 6);
+        if (field[x][y] !== 1) {
+          field[x][y] = 1;
+          ships--;
+        }
+      }
+
+      // гра
+
+      let shots = 10;
+      let hits = 0;
+      while (shots > 0 && hits < 5) {
+        // введення координат від користувача
+        const x = prompt("Введіть номер рядка (від 1 до 6): ") - 1;
+        const y = prompt("Введіть номер стовпця (від 1 до 6): ") - 1;
+
+        // перевірка, чи введені координати в межах поля
+        if (x < 0 || x > 5 || y < 0 || y > 5) {
+          alert("Введені некоректні координати!");
+          continue;
+        }
+
+        // перевірка, чи користувач не стріляє вже в цю клітину
+        if (field[x][y] === -1 || field[x][y] === 2) {
+          alert("Ви вже стріляли в цю клітину!");
+          continue;
+        }
+
+        // обробка результату пострілу
+        if (field[x][y] === 1) {
+          alert("Ви потопили корабль!");
+          field[x][y] = 2;
+          hits++;
+        } else {
+          alert("Промах!");
+          field[x][y] = -1;
+        }
+
+        // зменшення кількості залишилися пострілів
+        shots--;
+      }
+
+      // виведення результату гри
+      if (hits === 5) {
+        alert("Вітаємо! Ви перемогли!");
+      } else {
+        alert("Ви програли! Спробуйте ще раз.");
+      }
+    </script>
+  </body>
+</html>

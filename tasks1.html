@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Задача 1</h1>
+    <p>Знайти суми елементів у вказаній області</p>
+    <script>
+      //Знайти сумму елементів у вказаній області
+      let arr = [
+        [2, 4, 3, 6],
+        [3, 5, 6, 2],
+        [2, 4, 4, 3],
+        [3, 5, 5, 6],
+      ];
+      // Виконую першу умову, і область від 0 , 1 стовпці , і рядок від 0, до 1
+
+      let sum = 0;
+      for (let rowNumber = 0; rowNumber <= 1; rowNumbwe++) {
+        for (let colNumber = 0; colNumber <= 1; colNumber++) {
+          sum += arr[rowNumber][colNumber];
+        }
+      }
+      return sum;
+
+      //Виконую другу умову, і область від 1 , до 2 стовпці , і рядок від 0, до 1
+
+      let sum1 = 0;
+      for (let rowNumber = 1; rowNumber <= 2; rowNumbwe++) {
+        for (let colNumber = 0; colNumber <= 1; colNumber++) {
+          sum1 += arr[rowNumber][colNumber];
+        }
+      }
+      return sum1;
+
+      //Виконую третью умову, і область від 0 , до 1 стовпці , і рядок від 1, до 2
+
+      let sum2 = 0;
+      for (let rowNumber = 0; rowNumber <= 1; rowNumbwe++) {
+        for (let colNumber = 1; colNumber <= 2; colNumber++) {
+          sum2 += arr[rowNumber][colNumber];
+        }
+      }
+      return sum2;
+
+      //Виконую четверту умову, і область від 1 , до 2 стовпці , і рядок від 1, до 2
+
+      let sum3 = 0;
+      for (let rowNumber = 1; rowNumber <= 2; rowNumbwe++) {
+        for (let colNumber = 1; colNumber <= 2; colNumber++) {
+          sum3 += arr[rowNumber][colNumber];
+        }
+      }
+      return sum3;
+
+      //Суму парних рядків
+
+      let sum4 = 0;
+      for (let i = 0; i < arr.length; i++) {
+        if (i % 2 === 0) {
+          // перевірка чи індекс рядка є парним
+          for (let j = 0; j < arr[i].length; j++) {
+            sum4 += arr[i][j]; // додавання значення елементу до суми
+          }
+        }
+      }
+
+      document.write(sum4); // виведення суми парних рядків
+
+      //Суму непарних стовпців
+
+      let sum5 = 0;
+      for (let j = 0; j < arr[0].length; j++) {
+        // перебір стовпців
+        if (j % 2 !== 0) {
+          // перевірка чи індекс стовпця є непарним
+          for (let i = 0; i < arr.length; i++) {
+            sum5 += arr[i][j]; // додавання значення елементу до суми
+          }
+        }
+      }
+
+      document.write(sum5); // виведення суми непарних стовпців
+
+      let sum6 = 0;
+      for (let i = 0; i < arr.length; i++) {
+        if (i % 2 === 0) {
+          // якщо індекс рядка є парним
+          for (let j = 1; j < arr[i].length; j += 2) {
+            sum6 += arr[i][j]; // додавання значення елементу до суми
+          }
+        } else {
+          // якщо індекс рядка є непарним
+          for (let j = 0; j < arr[i].length; j += 2) {
+            sum6 += arr[i][j]; // додавання значення елементу до суми
+          }
+        }
+      }
+
+      document.write(sum6); // виведення суми значень у парних рядках та непарних стовпцях
+    </script>
+  </body>
+</html>
